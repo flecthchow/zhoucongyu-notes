@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { getPost, posts } from "../../blog-data";
 import Comments from "../../comments";
 
@@ -42,12 +44,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <i />
         </div>
         <article className="article-body">
-          {post.paragraphs.map((paragraph, index) => (
-            <div key={paragraph}>
-              {index === 1 && post.quote ? <blockquote>{post.quote}</blockquote> : null}
-              <p>{paragraph}</p>
-            </div>
-          ))}
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
         </article>
         <Comments />
         <nav className="article-end wrap" aria-label="Article navigation">
