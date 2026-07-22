@@ -1,91 +1,51 @@
 import assert from "node:assert/strict";
-import { access, readFile, readdir } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-const templateRoot = new URL("../", import.meta.url);
-const previewRoot = new URL("../app/_sites-preview/", import.meta.url);
+const projectRoot = new URL("../", import.meta.url);
+const postsRoot = new URL("../content/posts/", import.meta.url);
+const outputRoot = new URL("../dist/client/", import.meta.url);
 
-async function render() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-
-  return worker.fetch(
-    new Request("http://localhost/", {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
+test("stores every published article in its own Markdown file", async () => {
+  const files = (await readdir(postsRoot)).filter(
+    (file) => file.endsWith(".md") && !file.startsWith("_"),
   );
-}
 
-test("server-renders the starter loading skeleton", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-
-  const html = await response.text();
-  assert.match(html, developmentPreviewMeta);
-  assert.match(html, /<title>Your site is taking shape<\/title>/i);
-  assert.match(html, /Building your site/);
-  assert.match(html, /Your site is taking shape/);
-  assert.match(
-    html,
-    /Your first version will appear here automatically when it’s ready\./,
-  );
-  assert.doesNotMatch(html, /Codex/);
-  assert.match(html, /react-loading-skeleton/);
-  assert.match(html, /role="status"/);
-});
-
-test("keeps the loading skeleton scoped and disposable", async () => {
-  const [preview, css, page, layout, packageJson, files] = await Promise.all([
-    readFile(new URL("SkeletonPreview.tsx", previewRoot), "utf8"),
-    readFile(new URL("preview.css", previewRoot), "utf8"),
-    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../package.json", import.meta.url), "utf8"),
-    readdir(previewRoot),
+  assert.deepEqual(files.sort(), [
+    "cost-of-a-simple-life-online.md",
+    "health-system-that-asks-less.md",
+    "keeping-side-projects-small.md",
+    "swimming-in-the-ai-ocean.md",
   ]);
 
-  assert.deepEqual(files.sort(), ["SkeletonPreview.tsx", "preview.css"]);
-  assert.match(preview, /from "react-loading-skeleton"/);
-  assert.match(preview, /baseColor="#eceae7"/);
-  assert.match(preview, /highlightColor="#f9f8f6"/);
-  assert.match(preview, /duration=\{2\.8\}/);
-  assert.match(preview, /sites-skeleton-search-placeholder/);
-  assert.match(packageJson, /"react-loading-skeleton": "3\.5\.0"/);
+  for (const file of files) {
+    const source = await readFile(new URL(file, postsRoot), "utf8");
+    for (const field of ["title", "excerpt", "category", "date", "isoDate", "readTime", "color"]) {
+      assert.match(source, new RegExp(`^${field}:\\s+.+$`, "m"), `${file} is missing ${field}`);
+    }
+  }
 
-  const shellIndex = preview.indexOf('className="sites-skeleton-shell"');
-  const statusIndex = preview.indexOf('className="sites-skeleton-status"');
-  assert.ok(shellIndex >= 0 && statusIndex > shellIndex);
-  assert.match(css, /position:\s*fixed/);
-  assert.match(css, /inset:\s*0/);
-  assert.match(css, /opacity:\s*0\.52/);
-  assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.doesNotMatch(css, /#020617|canvas|pets|progress/i);
-  assert.doesNotMatch(
-    preview,
-    /loading-spinner|status-mark|status-progress|canvas|cookie|random/i,
-  );
+  await readFile(new URL("_template.md", postsRoot), "utf8");
+});
 
-  assert.match(page, /export const metadata:\s*Metadata/);
-  assert.match(page, /"codex-preview": "development"/);
-  assert.match(page, /<SkeletonPreview \/>/);
-  assert.match(layout, /title:\s*"Starter Project"/);
-  assert.doesNotMatch(layout, /codex-preview|_sites-preview|themeColor|\bViewport\b/);
-  assert.doesNotMatch(css, /(^|\s)(html|body)\s*\{/m);
+test("pre-renders the homepage and preserves every article URL", async () => {
+  const homepage = await readFile(new URL("index.html", outputRoot), "utf8");
+  assert.match(homepage, /Learning to swim in the AI ocean/);
+  assert.match(homepage, /A health system that asks less of me/);
 
-  await assert.rejects(
-    access(new URL("public/_sites-preview", templateRoot)),
-  );
+  const expected = new Map([
+    ["swimming-in-the-ai-ocean", "I do not need to map the whole ocean"],
+    ["health-system-that-asks-less", "Health advice can become another source of noise"],
+    ["keeping-side-projects-small", "Small enough to finish is large enough to teach me something"],
+    ["cost-of-a-simple-life-online", "Complexity rarely arrives all at once"],
+  ]);
+
+  for (const [slug, text] of expected) {
+    const page = await readFile(new URL(`posts/${slug}/index.html`, outputRoot), "utf8");
+    assert.match(page, new RegExp(text));
+    assert.match(page, /Comments are powered by GitHub Discussions/);
+  }
+
+  const source = await readFile(new URL("app/blog-data.ts", projectRoot), "utf8");
+  assert.match(source, /import\.meta\.glob/);
 });
