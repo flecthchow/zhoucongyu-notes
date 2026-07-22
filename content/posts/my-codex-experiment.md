@@ -1,22 +1,14 @@
 ---
-title: "Your article title"
-excerpt: "A one-sentence summary shown on the homepage and in search previews."
+title: "Codex is Amaizng"
+excerpt: "THe new era is here"
 category: "Tech"
-date: "Month D, YYYY"
+date: "July 22, 2026"
 isoDate: "YYYY-MM-DD"
-readTime: "5 min"
+readTime: "1 min"
 color: "coral"
 ---
 
-<!--
-Copy this file, remove the leading underscore from its filename, and use a
-short lowercase name with hyphens. The filename becomes the article URL.
 
-Available colors: coral, blue, lime, gold.
-Delete this comment before publishing.
--->
-
-Start your article here. A blank line creates a new paragraph.
 
 ## Why I think the AI changes everything
 
