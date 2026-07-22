@@ -18,14 +18,12 @@ Delete this comment before publishing.
 
 Start your article here. A blank line creates a new paragraph.
 
-## A section heading
+## Why I think the AI changes everything
 
-You can use **bold text**, *italics*, [links](https://example.com), and lists:
+- AI agent is really making the computer live again, it's totally automation. 
+- AI models behind is like the brain.
+- It save so much time and accelerate the development. 
 
-- First idea
-- Second idea
-- Third idea
+> Never come back, AI will lead us to a new era
 
-> Use a blockquote for a sentence you want to emphasize.
-
-Finish with the thought you want readers to remember.
+I will keep posting what's in my mind, let roll with AI
