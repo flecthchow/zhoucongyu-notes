@@ -1,4 +1,36 @@
-# vinext-starter
+# zhoucongyu notes
+
+> A fish swimming in AI ocean.
+
+A personal static blog about tech, health, and side projects. The site is built
+with Next.js and vinext, then exported as static pages for Cloudflare Pages.
+
+## Writing
+
+Posts live in `app/blog-data.ts`. Add a post there and it will appear on the
+homepage and receive its own page automatically.
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+## Cloudflare Pages
+
+- Build command: `npm run pages:build`
+- Build output directory: `dist/client`
+- Production branch: `main`
+
+The production site is configured for `https://zhoucongyu-notes.pages.dev`.
+
+## Comments
+
+Comments use Giscus and GitHub Discussions. Visitors sign in with GitHub; no
+email address is published by the site.
+
+## Starter architecture
 
 A clean full-stack starter running on
 [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and

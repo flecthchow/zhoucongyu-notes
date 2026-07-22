@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <>
       <header className="site-header">
-        <Link className="wordmark" href="/" aria-label="Field Notes home">
+        <Link className="wordmark" href="/" aria-label="zhoucongyu notes home">
           <span className="wordmark-dot" aria-hidden="true" />
-          Field Notes
+          zhoucongyu notes
         </Link>
         <nav aria-label="Main navigation">
           <Link href="#writing">Writing</Link>
@@ -19,16 +19,16 @@ export default function Home() {
 
       <main>
         <section className="hero wrap">
-          <p className="eyebrow">A personal blog about making things</p>
+          <p className="eyebrow">Tech · Health · Side projects</p>
           <h1>
-            A quieter corner
+            Swimming through
             <br />
-            of the <em>internet.</em>
+            the <em>AI ocean.</em>
           </h1>
           <div className="hero-bottom">
             <p className="hero-intro">
-              Notes on technology, thoughtful work, and the small discoveries
-              worth keeping. Written by <strong>Your Name</strong> from Taipei.
+              Notes from <strong>zhoucongyu</strong>—a fish swimming in the AI
+              ocean, exploring technology, health, and side projects.
             </p>
             <a className="round-link" href="#writing" aria-label="Browse recent writing">
               <span aria-hidden="true">↓</span>
@@ -38,9 +38,9 @@ export default function Home() {
 
         <div className="ticker" aria-hidden="true">
           <div>
-            <span>Ideas</span><i>✦</i><span>Experiments</span><i>✦</i>
-            <span>Useful things</span><i>✦</i><span>Ideas</span><i>✦</i>
-            <span>Experiments</span><i>✦</i><span>Useful things</span><i>✦</i>
+            <span>Technology</span><i>✦</i><span>Health</span><i>✦</i>
+            <span>Side projects</span><i>✦</i><span>Technology</span><i>✦</i>
+            <span>Health</span><i>✦</i><span>Side projects</span><i>✦</i>
           </div>
         </div>
 
@@ -48,7 +48,7 @@ export default function Home() {
           <div className={`feature-art art-${featured.color}`}>
             <span className="art-number">01</span>
             <span className="art-ring" />
-            <span className="art-caption">Field note · {featured.readTime}</span>
+            <span className="art-caption">Ocean note · {featured.readTime}</span>
           </div>
           <article className="feature-copy">
             <div className="post-meta">
@@ -94,13 +94,10 @@ export default function Home() {
 
         <section className="now wrap">
           <div>
-            <p className="eyebrow">Currently</p>
-            <h2>Learning in public,<br />one note at a time.</h2>
+            <p className="eyebrow">Three currents</p>
+            <h2>Learning in public,<br />one experiment at a time.</h2>
           </div>
-          <p>
-            This is a living notebook, not a content machine. New pieces arrive
-            when there is something honest and useful to share.
-          </p>
+          <div className="topic-list" aria-label="Topics"><span>Tech</span><span>Health</span><span>Side projects</span></div>
           <Link className="button" href="/about">More about this blog</Link>
         </section>
       </main>
@@ -108,10 +105,10 @@ export default function Home() {
       <footer className="site-footer wrap">
         <div>
           <span className="wordmark-dot" aria-hidden="true" />
-          <strong>Field Notes</strong>
+          <strong>zhoucongyu notes</strong>
         </div>
-        <p>Made with care in Taipei · © 2026</p>
-        <a href="mailto:hello@example.com">Say hello ↗</a>
+        <p>A fish swimming in AI ocean · © 2026</p>
+        <a href="https://github.com/flecthchow/zhoucongyu-notes/discussions">Join the discussion ↗</a>
       </footer>
     </>
   );

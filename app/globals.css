@@ -51,6 +51,8 @@ a { color:inherit; text-decoration:none; }
 .now { background:var(--cream); margin-bottom:120px; padding:72px; display:grid; grid-template-columns:1.25fr .75fr; gap:70px; align-items:end; }
 .now h2 { font-family:var(--font-display); font-weight:500; font-size:58px; line-height:.95; letter-spacing:-.045em; margin:0; }
 .now>p { line-height:1.65; color:#48534d; align-self:center; }
+.topic-list { display:flex; flex-wrap:wrap; gap:10px; align-self:center; }
+.topic-list span { padding:10px 14px; border:1px solid rgba(23,33,29,.45); border-radius:999px; font-size:12px; }
 .button { display:inline-flex; width:max-content; padding:14px 20px; border:1px solid var(--ink); font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; transition:.2s; }
 .button:hover { background:var(--ink); color:var(--paper); }
 .site-footer { min-height:130px; border-top:1px solid rgba(23,33,29,.22); display:grid; grid-template-columns:1fr 1fr 1fr; align-items:center; font-size:12px; }
@@ -70,6 +72,9 @@ a { color:inherit; text-decoration:none; }
 blockquote { margin:64px -100px; padding:12px 0 12px 34px; border-left:4px solid var(--coral); font-size:42px; line-height:1.1; letter-spacing:-.035em; font-style:italic; }
 .article-end { margin-top:100px; padding:45px 0 100px; border-top:1px solid rgba(23,33,29,.22); display:flex; justify-content:space-between; align-items:center; }
 .article-end p { font-family:var(--font-display); font-size:34px; margin:0; }
+.comments { padding:80px 0 100px; border-top:1px solid rgba(23,33,29,.22); display:grid; grid-template-columns:.72fr 1.28fr; gap:8vw; }
+.comments-intro h2 { font-family:var(--font-display); font-size:52px; line-height:1; letter-spacing:-.04em; font-weight:500; margin:0 0 22px; }
+.comments-intro>p:last-child { color:#59635e; line-height:1.6; max-width:330px; }
 .about-page { padding:85px 0 140px; }
 .about-page h1 { font-size:clamp(70px,10vw,140px); margin-bottom:85px; }
 .about-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:9vw; align-items:start; }
@@ -83,5 +88,5 @@ blockquote { margin:64px -100px; padding:12px 0 12px 34px; border-left:4px solid
   .wrap,.site-header,.article-art{width:min(100% - 30px,1180px)}
   .site-header{height:72px}.site-header nav{gap:18px}.hero{min-height:610px;padding:70px 0 48px}.hero h1{font-size:19vw;line-height:.87}.hero-bottom{align-items:end}.hero-intro{font-size:16px;max-width:78%}.round-link{width:52px;height:52px}
   .featured{grid-template-columns:1fr;padding:70px 0;gap:50px}.feature-copy h2{font-size:54px}.latest{padding:80px 0}.section-heading{grid-template-columns:1fr;margin-bottom:35px}.section-heading h2{font-size:55px}.post-row{grid-template-columns:42px 1fr;gap:14px}.row-arrow{display:none}.post-row h3{font-size:38px}
-  .now{padding:42px 25px;margin-bottom:70px;grid-template-columns:1fr;gap:28px}.now h2{font-size:45px}.site-footer{grid-template-columns:1fr 1fr;gap:12px;padding:35px 0}.site-footer p{display:none}.article-title h1{font-size:18vw}.article-title>p{font-size:17px;margin-bottom:55px}.article-art{height:250px;margin-bottom:65px}.article-art i{width:280px;height:280px}.article-body{font-size:22px}blockquote{margin:50px 0;font-size:34px}.article-end{margin-top:65px;padding-bottom:65px}.about-page{padding:60px 0 90px}.about-grid{grid-template-columns:1fr}.about-page h1{margin-bottom:55px}.portrait-placeholder{max-height:480px}.about-copy .lead{font-size:31px}
+  .now{padding:42px 25px;margin-bottom:70px;grid-template-columns:1fr;gap:28px}.now h2{font-size:45px}.site-footer{grid-template-columns:1fr 1fr;gap:12px;padding:35px 0}.site-footer p{display:none}.article-title h1{font-size:18vw}.article-title>p{font-size:17px;margin-bottom:55px}.article-art{height:250px;margin-bottom:65px}.article-art i{width:280px;height:280px}.article-body{font-size:22px}blockquote{margin:50px 0;font-size:34px}.article-end{margin-top:65px;padding-bottom:65px}.comments{grid-template-columns:1fr;padding:60px 0}.about-page{padding:60px 0 90px}.about-grid{grid-template-columns:1fr}.about-page h1{margin-bottom:55px}.portrait-placeholder{max-height:480px}.about-copy .lead{font-size:31px}
 }

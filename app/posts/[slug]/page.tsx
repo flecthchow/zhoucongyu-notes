@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPost, posts } from "../../blog-data";
+import Comments from "../../comments";
 
 export function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
@@ -10,7 +11,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
-  return post ? { title: `${post.title} — Field Notes`, description: post.excerpt } : {};
+  return post ? { title: `${post.title} — zhoucongyu notes`, description: post.excerpt } : {};
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -22,7 +23,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     <>
       <header className="site-header article-header">
         <Link className="wordmark" href="/">
-          <span className="wordmark-dot" aria-hidden="true" /> Field Notes
+          <span className="wordmark-dot" aria-hidden="true" /> zhoucongyu notes
         </Link>
         <Link className="back-link" href="/">← All writing</Link>
       </header>
@@ -37,7 +38,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <p>{post.excerpt}</p>
         </header>
         <div className={`article-art art-${post.color}`} aria-hidden="true">
-          <span>Field Notes</span>
+          <span>zhoucongyu notes</span>
           <i />
         </div>
         <article className="article-body">
@@ -48,13 +49,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             </div>
           ))}
         </article>
+        <Comments />
         <nav className="article-end wrap" aria-label="Article navigation">
           <p>Thanks for reading.</p>
           <Link className="button" href="/">Back to all writing</Link>
         </nav>
       </main>
       <footer className="site-footer wrap">
-        <strong>Field Notes</strong><p>Made with care in Taipei · © 2026</p>
+        <strong>zhoucongyu notes</strong><p>A fish swimming in AI ocean · © 2026</p>
       </footer>
     </>
   );
