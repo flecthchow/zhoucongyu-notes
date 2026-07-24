@@ -36,20 +36,7 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="ticker" aria-hidden="true">
-          <div>
-            <span>Technology</span><i>✦</i><span>Health</span><i>✦</i>
-            <span>Side projects</span><i>✦</i><span>Technology</span><i>✦</i>
-            <span>Health</span><i>✦</i><span>Side projects</span><i>✦</i>
-          </div>
-        </div>
-
         <section className="featured wrap" id="writing">
-          <div className={`feature-art art-${featured.color}`}>
-            <span className="art-number">01</span>
-            <span className="art-ring" />
-            <span className="art-caption">Ocean note · {featured.readTime}</span>
-          </div>
           <article className="feature-copy">
             <div className="post-meta">
               <span>{featured.category}</span>

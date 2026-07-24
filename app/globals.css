@@ -21,17 +21,9 @@ a { color:inherit; text-decoration:none; }
 .hero-intro { max-width:520px; margin:50px 0 0; font-size:19px; line-height:1.55; letter-spacing:-.02em; }
 .round-link { width:68px; height:68px; border:1px solid var(--ink); border-radius:50%; display:grid; place-items:center; font-size:24px; transition:.2s; }
 .round-link:hover { background:var(--ink); color:var(--paper); transform:translateY(4px); }
-.ticker { overflow:hidden; background:var(--ink); color:var(--paper); padding:17px 0; }
-.ticker div { width:max-content; display:flex; gap:28px; align-items:center; animation:marquee 28s linear infinite; text-transform:uppercase; font-size:12px; letter-spacing:.14em; }
-.ticker i { color:var(--coral); font-style:normal; }
-@keyframes marquee { to { transform:translateX(-50%); } }
-.featured { padding:120px 0; display:grid; grid-template-columns:1.08fr .92fr; gap:8vw; align-items:center; border-bottom:1px solid rgba(23,33,29,.22); }
-.feature-art { aspect-ratio:1.08; position:relative; overflow:hidden; padding:28px; }
+.featured { padding:110px 0; border-bottom:1px solid rgba(23,33,29,.22); }
+.feature-copy { max-width:900px; margin-inline:auto; }
 .art-coral { background:var(--coral); }.art-blue { background:var(--blue); }.art-lime { background:var(--lime); }.art-gold { background:var(--gold); }
-.art-number { font-family:var(--font-display); font-size:40px; }
-.art-ring { position:absolute; width:72%; aspect-ratio:1; border:2px solid var(--ink); border-radius:50%; right:-12%; top:8%; }
-.art-ring::after { content:""; position:absolute; inset:18%; border:2px solid var(--ink); border-radius:50%; }
-.art-caption { position:absolute; bottom:28px; left:28px; text-transform:uppercase; letter-spacing:.15em; font-size:10px; }
 .post-meta { display:flex; flex-wrap:wrap; gap:18px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; }
 .post-meta span:first-child { color:#be3f29; font-weight:600; }
 .feature-copy h2 { font-family:var(--font-display); font-size:clamp(52px,6vw,82px); line-height:.93; letter-spacing:-.055em; font-weight:500; margin:32px 0; }
@@ -95,10 +87,10 @@ a { color:inherit; text-decoration:none; }
 .portrait-placeholder span { font-family:var(--font-display); font-size:70px; z-index:1; }
 .about-copy { font-size:17px; line-height:1.75; }
 .about-copy .lead { font-family:var(--font-display); font-size:36px; line-height:1.25; letter-spacing:-.025em; margin-top:0; }
-@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto}.ticker div{animation:none} }
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
 @media (max-width:760px){
   .wrap,.site-header,.article-art{width:min(100% - 30px,1180px)}
   .site-header{height:72px}.site-header nav{gap:18px}.hero{min-height:610px;padding:70px 0 48px}.hero h1{font-size:19vw;line-height:.87}.hero-bottom{align-items:end}.hero-intro{font-size:16px;max-width:78%}.round-link{width:52px;height:52px}
-  .featured{grid-template-columns:1fr;padding:70px 0;gap:50px}.feature-copy h2{font-size:54px}.latest{padding:80px 0}.section-heading{grid-template-columns:1fr;margin-bottom:35px}.section-heading h2{font-size:55px}.post-row{grid-template-columns:42px 1fr;gap:14px}.row-arrow{display:none}.post-row h3{font-size:38px}
+  .featured{padding:70px 0}.feature-copy h2{font-size:54px}.latest{padding:80px 0}.section-heading{grid-template-columns:1fr;margin-bottom:35px}.section-heading h2{font-size:55px}.post-row{grid-template-columns:42px 1fr;gap:14px}.row-arrow{display:none}.post-row h3{font-size:38px}
   .now{padding:42px 25px;margin-bottom:70px;grid-template-columns:1fr;gap:28px}.now h2{font-size:45px}.site-footer{grid-template-columns:1fr 1fr;gap:12px;padding:35px 0}.site-footer p{display:none}.article-title h1{font-size:18vw}.article-title>p{font-size:17px;margin-bottom:55px}.article-art{height:250px;margin-bottom:65px}.article-art i{width:280px;height:280px}.article-body{font-size:22px}.article-body h2{font-size:38px}.article-body h3{font-size:30px}.article-body blockquote{margin:50px 0;font-size:34px}.article-end{margin-top:65px;padding-bottom:65px}.comments{grid-template-columns:1fr;padding:60px 0}.about-page{padding:60px 0 90px}.about-grid{grid-template-columns:1fr}.about-page h1{margin-bottom:55px}.portrait-placeholder{max-height:480px}.about-copy .lead{font-size:31px}
 }
