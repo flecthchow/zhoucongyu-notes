@@ -6,7 +6,7 @@ const display = Cormorant_Garamond({ variable: "--font-display", subsets: ["lati
 const sans = DM_Sans({ variable: "--font-sans", subsets: ["latin"], weight: ["400", "500", "600"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://zhoucongyu-notes.pages.dev"),
+  metadataBase: new URL("https://zhoucongyu.pages.dev"),
   title: "zhoucongyu notes — Swimming in the AI ocean",
   description: "A fish swimming in AI ocean. Notes on tech, health, and side projects.",
   openGraph: { title: "zhoucongyu notes", description: "A fish swimming in AI ocean. Notes on tech, health, and side projects.", type: "website", images: [{ url: "/og-zhoucongyu.png", width: 1734, height: 907, alt: "zhoucongyu notes — Swimming in the AI ocean" }] },

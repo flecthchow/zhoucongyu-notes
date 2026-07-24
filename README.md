@@ -19,7 +19,7 @@ The filename becomes the article URL. For example:
 
 ```text
 content/posts/what-i-learned-building-a-chatbot.md
-https://zhoucongyu-notes.pages.dev/posts/what-i-learned-building-a-chatbot/
+https://zhoucongyu.pages.dev/posts/what-i-learned-building-a-chatbot/
 ```
 
 Posts are ordered by `isoDate`, newest first. The newest post is featured on the
@@ -55,7 +55,7 @@ automatically.
 
 - Build command: `npm run pages:build`
 - Build output directory: `dist/client`
-- Production site: https://zhoucongyu-notes.pages.dev
+- Production site: https://zhoucongyu.pages.dev
 
 ## Comments
 
