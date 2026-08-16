@@ -1,101 +1,48 @@
 import Link from "next/link";
 import { posts } from "./blog-data";
+import SiteHeader from "./site-header";
 
 export default function Home() {
-  const [featured, ...morePosts] = posts;
-
   return (
     <>
-      <header className="site-header">
-        <Link className="wordmark" href="/" aria-label="zhoucongyu notes home">
-          <span className="wordmark-dot" aria-hidden="true" />
-          zhoucongyu notes
-        </Link>
-        <nav aria-label="Main navigation">
-          <Link href="#writing">Writing</Link>
-          <Link href="/about">About</Link>
-        </nav>
-      </header>
-
-      <main>
-        <section className="hero wrap">
-          <p className="eyebrow">Tech · Health · Side projects</p>
-          <h1>
-            Swimming through
-            <br />
-            the <em>AI ocean.</em>
-          </h1>
-          <div className="hero-bottom">
-            <p className="hero-intro">
-              Notes from <strong>zhoucongyu</strong>—a fish swimming in the AI
-              ocean, exploring technology, health, and side projects.
-            </p>
-            <a className="round-link" href="#writing" aria-label="Browse recent writing">
-              <span aria-hidden="true">↓</span>
-            </a>
+      <SiteHeader active="posts" />
+      <main className="main-column">
+        <section className="home-intro">
+          <p className="kicker">A public notebook</p>
+          <h1>👋 Welcome to zhoucongyu notes</h1>
+          <p>
+            Hi, I’m zhoucongyu—a fish swimming in the AI ocean. I document
+            what I learn about technology, health, and small side projects.
+          </p>
+          <div className="intro-links" aria-label="Elsewhere">
+            <a href="https://github.com/flecthchow" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <Link href="/about">About me</Link>
           </div>
         </section>
 
-        <section className="featured wrap" id="writing">
-          <article className="feature-copy">
-            <div className="post-meta">
-              <span>{featured.category}</span>
-              <time dateTime={featured.isoDate}>{featured.date}</time>
-            </div>
-            <h2>
-              <Link href={`/posts/${featured.slug}`}>{featured.title}</Link>
-            </h2>
-            <p>{featured.excerpt}</p>
-            <Link className="text-link" href={`/posts/${featured.slug}`}>
-              Read the essay <span aria-hidden="true">↗</span>
-            </Link>
-          </article>
-        </section>
-
-        <section className="latest wrap" aria-labelledby="latest-heading">
-          <div className="section-heading">
-            <p className="eyebrow">From the notebook</p>
-            <h2 id="latest-heading">Recent writing</h2>
-          </div>
-          <div className="post-list">
-            {morePosts.map((post, index) => (
-              <article className="post-row" key={post.slug}>
-                <span className="row-number">0{index + 2}</span>
-                <div>
-                  <div className="post-meta">
-                    <span>{post.category}</span>
-                    <time dateTime={post.isoDate}>{post.date}</time>
-                  </div>
-                  <h3>
-                    <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-                  </h3>
-                  <p>{post.excerpt}</p>
-                </div>
-                <Link className="row-arrow" href={`/posts/${post.slug}`} aria-label={`Read ${post.title}`}>
-                  ↗
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="now wrap">
-          <div>
-            <p className="eyebrow">Three currents</p>
-            <h2>Learning in public,<br />one experiment at a time.</h2>
-          </div>
-          <div className="topic-list" aria-label="Topics"><span>Tech</span><span>Health</span><span>Side projects</span></div>
-          <Link className="button" href="/about">More about this blog</Link>
+        <section className="post-feed" aria-label="Recent posts">
+          {posts.map((post) => (
+            <article className="post-entry" key={post.slug}>
+              <header>
+                <p className="post-category">{post.category}</p>
+                <h2><Link href={`/posts/${post.slug}`}>{post.title}</Link></h2>
+              </header>
+              <p className="post-excerpt">{post.excerpt}</p>
+              <footer className="entry-meta">
+                <time dateTime={post.isoDate}>{post.date}</time>
+                <span aria-hidden="true">·</span>
+                <span>{post.readTime} read</span>
+                <span aria-hidden="true">·</span>
+                <span>zhoucongyu</span>
+              </footer>
+              <Link className="entry-link" href={`/posts/${post.slug}`} aria-label={`Read ${post.title}`} />
+            </article>
+          ))}
         </section>
       </main>
-
-      <footer className="site-footer wrap">
-        <div>
-          <span className="wordmark-dot" aria-hidden="true" />
-          <strong>zhoucongyu notes</strong>
-        </div>
-        <p>A fish swimming in AI ocean · © 2026</p>
-        <a href="https://github.com/flecthchow/zhoucongyu-notes/discussions">Join the discussion ↗</a>
+      <footer className="site-footer">
+        <span>© 2026 zhoucongyu notes</span>
+        <span>A fish swimming in AI ocean.</span>
       </footer>
     </>
   );

@@ -1,15 +1,13 @@
 import Link from "next/link";
+import SiteHeader from "../site-header";
 
 export default function AboutPage() {
   return (
     <>
-      <header className="site-header article-header">
-        <Link className="wordmark" href="/"><span className="wordmark-dot" aria-hidden="true" /> zhoucongyu notes</Link>
-        <Link className="back-link" href="/">← Home</Link>
-      </header>
-      <main className="about-page wrap">
-        <p className="eyebrow">About this place</p>
-        <h1>Hi, I’m <em>zhoucongyu.</em></h1>
+      <SiteHeader active="about" />
+      <main className="about-page">
+        <p className="kicker">About this place</p>
+        <h1>Hi, I’m zhoucongyu.</h1>
         <div className="about-grid">
           <div className="portrait-placeholder" aria-label="zhoucongyu monogram"><span>ZC</span></div>
           <div className="about-copy">
@@ -20,7 +18,10 @@ export default function AboutPage() {
           </div>
         </div>
       </main>
-      <footer className="site-footer wrap"><strong>zhoucongyu notes</strong><p>A fish swimming in AI ocean · © 2026</p></footer>
+      <footer className="site-footer">
+        <span>© 2026 zhoucongyu notes</span>
+        <span>A fish swimming in AI ocean.</span>
+      </footer>
     </>
   );
 }
