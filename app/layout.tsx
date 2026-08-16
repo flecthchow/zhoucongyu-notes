@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://zhoucongyu.pages.dev"),
   title: "zhoucongyu notes — A public notebook",
   description: "A fish swimming in AI ocean. Notes on tech, health, and side projects.",
+  icons: {
+    icon: [
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon-32.png",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     title: "zhoucongyu notes",
     description: "A fish swimming in AI ocean. Notes on tech, health, and side projects.",
